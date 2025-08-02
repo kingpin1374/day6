@@ -1,0 +1,22 @@
+name: Trigger Jenkins Pipeline
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+   trigger-jenkins:
+     runs_on: ubuntu-latest
+     steps:
+       - name: Trigger Jenkins Job
+         env:
+           JENKINS_API_TOKEN: ${{ secret.11b7a869823e051552b18ec2c6e698ee5e }}
+           JENKINS_USERNAME: ${{ secret.palmu }}
+           JENKINS_URL: ${{ secret.http://localhost:8080/ }}
+           JENKINS_JOB_NAME: Github_action
+         run:  | 
+           curl -X POST \
+           -u "${{ env.palmu }}:${{ env.env.11b7a869823e051552b18ec2c6e698ee5e }}" \
+           "${{ env.http://localhost:8080/ }}/job/${{ env.Github_action }}/buildwithParamters?token+11b7a869823e051552b18ec2c6e698ee5e&param1=value1"
+    
